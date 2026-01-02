@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Help Center</h1>
+        <p>Learn how to use XYF Vdownload effectively</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="help-wrapper">
+        <!-- Quick Start Guide -->
+        <section class="help-section">
+            <div class="section-header">
+                <span class="icon">🚀</span>
+                <h2>Quick Start Guide</h2>
+            </div>
+            <div class="help-content">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Copy Video URL</h3>
+                        <p>Go to YouTube, X (Twitter), or Facebook and copy the video link from your browser's address bar or the share button.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Paste URL</h3>
+                        <p>Return to XYF Vdownload and paste the link into the input box on our homepage.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Fetch Video Info</h3>
+                        <p>Click the "Fetch Video" button. We'll retrieve the video information including available quality options.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Choose Quality & Download</h3>
+                        <p>Select your preferred video quality from the dropdown menu and click "Download Now" to save the video to your device.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform-Specific Guides -->
+        <section class="help-section">
+            <div class="section-header">
+                <span class="icon">🎥</span>
+                <h2>Platform-Specific Guides</h2>
+            </div>
+            <div class="help-content">
+                <details class="guide-item">
+                    <summary>
+                        <span class="platform-icon">📺</span>
+                        <strong>YouTube Videos</strong>
+                    </summary>
+                    <div class="guide-content">
+                        <p><strong>How to get the URL:</strong></p>
+                        <ol>
+                            <li>Open the YouTube video in your browser or app</li>
+                            <li>Click the "Share" button below the video</li>
+                            <li>Copy the link that appears</li>
+                            <li>Paste it into XYF Vdownload</li>
+                        </ol>
+                        <p><strong>Note:</strong> Some copyrighted content may be restricted by YouTube.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>
+                        <span class="platform-icon">🐦</span>
+                        <strong>X (Twitter) Videos</strong>
+                    </summary>
+                    <div class="guide-content">
+                        <p><strong>How to get the URL:</strong></p>
+                        <ol>
+                            <li>Find the tweet with the video</li>
+                            <li>Click the share icon on the tweet</li>
+                            <li>Select "Copy link to Tweet"</li>
+                            <li>Paste it into XYF Vdownload</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>
+                        <span class="platform-icon">📘</span>
+                        <strong>Facebook Videos</strong>
+                    </summary>
+                    <div class="guide-content">
+                        <p><strong>How to get the URL:</strong></p>
+                        <ol>
+                            <li>Open the Facebook video post</li>
+                            <li>Click the three dots menu on the post</li>
+                            <li>Select "Copy link"</li>
+                            <li>Paste it into XYF Vdownload</li>
+                        </ol>
+                        <p><strong>Note:</strong> Only public videos can be downloaded.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section class="help-section">
+            <div class="section-header">
+                <span class="icon">🔧</span>
+                <h2>Troubleshooting</h2>
+            </div>
+            <div class="help-content">
+                <details class="guide-item">
+                    <summary><strong>"Video not found" error</strong></summary>
+                    <div class="guide-content">
+                        <p>This usually means:</p>
+                        <ul>
+                            <li>The video link is incorrect or incomplete</li>
+                            <li>The video has been deleted or made private</li>
+                            <li>The video is region-restricted</li>
+                        </ul>
+                        <p><strong>Solution:</strong> Double-check the link and ensure the video is publicly accessible.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary><strong>Download is slow or stuck</strong></summary>
+                    <div class="guide-content">
+                        <ul>
+                            <li>Check your internet connection</li>
+                            <li>Try a lower video quality</li>
+                            <li>Close other tabs or applications using bandwidth</li>
+                            <li>Try again later if the platform is experiencing issues</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary><strong>"Platform not supported" message</strong></summary>
+                    <div class="guide-content">
+                        <p>We currently support YouTube, X (Twitter), and Facebook only. Other platforms will be added in future updates.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary><strong>Video quality options are limited</strong></summary>
+                    <div class="guide-content">
+                        <p>Available quality options depend on what the source platform provides. Not all videos are available in HD.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Contact Support -->
+        <section class="help-section">
+            <div class="section-header">
+                <span class="icon">💬</span>
+                <h2>Still Need Help?</h2>
+            </div>
+            <div class="help-content">
+                <div class="contact-card">
+                    <p>If you couldn't find the answer you're looking for, our support team is here to help!</p>
+                    <div class="contact-options">
+                        <a href="/contact" class="btn-contact">Contact Support</a>
+                        <a href="mailto:etims567@gmail.com" class="btn-contact-secondary">Email Us</a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        Response time: Within 24 hours
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Download Videos in Seconds</h1>
+        <p>Fast, free, and easy video downloads from YouTube, X, and Facebook</p>
+    </div>
+</section>
+
+<!-- Main Container -->
+<div class="container">
+    <div class="input-section">
+        <div class="input-group">
+            <input type="text" id="url-input" placeholder="Paste your video link here...">
+            <button id="fetch-btn" class="btn-fetch">Fetch Video</button>
+        </div>
+    </div>
+
+    <div id="result-card" class="result-card">
+        <img id="res-thumb" class="thumb-img" alt="Video thumbnail">
+        <div class="result-content">
+            <h3 id="res-title"></h3>
+            <p>Select Quality:</p>
+            <select id="quality-selector"></select>
+            <button id="download-btn" class="btn-download">Download Now</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // FETCH LOGIC
+    document.getElementById('fetch-btn').onclick = async () => {
+        const urlInput = document.getElementById('url-input');
+        const resCard = document.getElementById('result-card');
+        const selector = document.getElementById('quality-selector');
+        const fetchBtn = document.getElementById('fetch-btn');
+        
+        const url = urlInput.value;
+        
+        if (!url) {
+            showNotify('Please paste your video link first', 'error'); // Uses the new Toast
+            return;
+        }
+
+        // --- Start Loading State ---
+        const originalBtnText = fetchBtn.innerText;
+        fetchBtn.disabled = true;
+        fetchBtn.innerHTML = '<div class="fetch-video">Fetching Video...<span class="spinner"></span></div>'; // Shows the CSS Spinner
+        resCard.classList.remove('show'); // Hide previous results if any
+
+        try {
+            const response = await fetch(`/fetch/?url=${encodeURIComponent(url)}`);
+            const data = await response.json();
+
+            if(data.status === 'success') {
+                document.getElementById('res-title').innerText = data.title;
+                document.getElementById('res-thumb').src = data.thumbnail;
+                
+                // Fill the quality dropdown
+                selector.innerHTML = '';
+                data.formats.forEach(f => {
+                    let opt = document.createElement('option');
+                    opt.value = f.url;
+                    opt.text = `${f.res} (.${f.ext})`;
+                    selector.appendChild(opt);
+                });
+                
+                resCard.classList.add('show');
+                showNotify('Video found! Ready to download.');
+            } else {
+                showNotify("Couldn't find video. Check the link and try again", "error");
+            }
+        } catch (error) {
+            showNotify('Something went wrong. Please check your connection.', 'error');
+            console.error(error);
+        } finally {
+            // --- Reset Loading State ---
+            fetchBtn.disabled = false;
+            fetchBtn.innerText = originalBtnText;
+        }
+    };
+
+document.getElementById('url-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById('fetch-btn').click();
+    }
+
+});
+
+    document.getElementById('download-btn').onclick = () => {
+        const downloadBtn = document.getElementById('download-btn');
+        
+        const streamUrl = document.getElementById('quality-selector').value;
+        const title = document.getElementById('res-title').innerText;
+        window.location.href = `/download/?url=${encodeURIComponent(streamUrl)}&title=${encodeURIComponent(title)}`;
+    };
+</script>
+{% endblock %}
